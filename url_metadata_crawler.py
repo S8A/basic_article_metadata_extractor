@@ -87,7 +87,7 @@ def extract_date(soup: BeautifulSoup) -> str | None:
         ]
 
         for pattern in date_patterns:
-            match = re.search(pattern, post_header.get_text())
+            match = re.search(pattern, post_header.get_text(separator="\n"))
             if match and (iso_date := parse_date_to_iso(match.group())):
                 return iso_date
 
